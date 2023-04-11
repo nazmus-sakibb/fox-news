@@ -12,10 +12,10 @@ const Main = () => {
             <Header />
             <Container>
                 <Row>
-                    <Col lg='3'>
+                    <Col lg='2'>
                         <LeftSideNav />
                     </Col>
-                    <Col lg='6'>
+                    <Col lg='7'>
                         <Outlet />
                     </Col>
                     <Col lg='3'>
