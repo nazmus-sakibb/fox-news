@@ -2,23 +2,23 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaRegBookmark, FaShareAlt } from 'react-icons/fa';
+import { FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
 
 const NewsSummaryCard = ({ news }) => {
-    const { _id, title, author, details, image_url, total_view } = news;
+    const { _id, title, author, details, image_url, rating, total_view } = news;
     console.log(news);
     return (
         <Card className="mb-5">
             <Card.Header className='d-flex justify-content-between align-items-center'>
                 <div className='d-flex justify-content-between align-items-center'>
-                    <Image className='me-3' src={author.img} style={{ height: '50px' }} roundedCircle />
+                    <Image className='me-3' src={author?.img} style={{ height: '50px' }} roundedCircle />
                     <div>
-                        <p className='m-0'>{author.name}</p>
-                        <p className='m-0'>P{author.published_date}</p>
+                        <p className='m-0'>{author?.name}</p>
+                        <p className='m-0'>P{author?.published_date}</p>
                     </div>
                 </div>
                 <div>
-                    <FaRegBookmark />
+                    <FaRegBookmark className='me-2'/>
                     <FaShareAlt />
                 </div>
             </Card.Header>
@@ -33,7 +33,15 @@ const NewsSummaryCard = ({ news }) => {
                     }
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            <Card.Footer className="text-muted">
+                <div>
+                    <FaStar className='text-warning'/>
+                    <span>{rating?.number}</span>
+                </div>
+                <div>
+                    
+                </div>
+            </Card.Footer>
         </Card>
     );
 };
