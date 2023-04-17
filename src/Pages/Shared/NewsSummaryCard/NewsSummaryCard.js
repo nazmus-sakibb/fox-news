@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
+import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
 
 const NewsSummaryCard = ({ news }) => {
     const { _id, title, author, details, image_url, rating, total_view } = news;
@@ -33,13 +33,14 @@ const NewsSummaryCard = ({ news }) => {
                     }
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className="text-muted">
+            <Card.Footer className="d-flex justify-content-between">
                 <div>
-                    <FaStar className='text-warning'/>
+                    <FaStar className='text-warning me-2'/>
                     <span>{rating?.number}</span>
                 </div>
                 <div>
-                    
+                    <FaEye className='me-2'/>
+                    <span>{total_view}</span>
                 </div>
             </Card.Footer>
         </Card>
