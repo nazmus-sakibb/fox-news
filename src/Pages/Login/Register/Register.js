@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
 
     const handleSubmit = e => {
@@ -20,8 +21,12 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError('');
             })
-            .catch(e => console.error(e));
+            .catch(e => {
+                console.error(e);
+                setError(e.message);
+            });
     }
     return (
         <Form onSubmit={handleSubmit}>
@@ -49,7 +54,7 @@ const Register = () => {
                 Register
             </Button>
             <Form.Text className="text-danger">
-                {/* We'll never share your email with anyone else. */}
+                {error}
             </Form.Text>
         </Form>
     );
